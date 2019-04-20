@@ -1,1 +1,12 @@
-
+{
+    "name": "rxlisbest/php-date",
+    "description": "php 各种日期获取",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Roy",
+            "email": "rxlisbest@gmail.com"
+        }
+    ],
+    "require": {}
+}
