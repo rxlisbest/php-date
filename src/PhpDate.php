@@ -15,6 +15,5 @@ class PhpDate
     public function __construct($date)
     {
         $this->date = $date;
-        var_dump($data);
     }
 }
