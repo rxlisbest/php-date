@@ -11,10 +11,9 @@ namespace Rxlisbest\PhpDate\Traits;
 
 trait Week
 {
-    protected $timestamp;
-
     public function sunday()
     {
-        return date($this->format, ($this->timestamp + (7 - (date('w') == 0 ? 7 : date('w'))) * 24 * 3600));
+        $this->outputTimestamp = $this->inputTimestamp + (7 - (date('w') == 0 ? 7 : date('w'))) * 24 * 3600;
+        return $this->output();
     }
 }
