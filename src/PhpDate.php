@@ -10,10 +10,31 @@ namespace Rxlisbest\PhpDate;
 
 class PhpDate
 {
-    private $date;
+    protected $timestamp;
 
-    public function __construct($date)
+    protected $format = 'Y-m-d H:i:s';
+
+    public function __construct($string)
     {
-        $this->date = $date;
+        $this->setTimestamp($string);
+    }
+
+    protected function setTimestamp($string)
+    {
+        if (ctype_digit($string) && $string <= 2147483647) {
+            $this->timestamp = $string;
+        } else {
+            $this->timestamp = strtotime($string);
+        }
+    }
+
+    public function today() {
+        return date($this->format, $this->timestamp);
+    }
+
+    public function format($format)
+    {
+        $this->format = $format;
+        return $this;
     }
 }
