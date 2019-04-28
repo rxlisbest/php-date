@@ -51,7 +51,7 @@ class PhpDate
             if ($timestamp === false) {
                 throw new \Exception('Illegal parameter format');
             }
-            $this->inputTimestamp = $timestamp;
+            $this->inputTimestamp =  $timestamp;
         }
     }
 
