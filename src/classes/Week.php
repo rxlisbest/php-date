@@ -6,9 +6,10 @@
  * Time: 09:12
  */
 
-namespace Rxlisbest\PhpDate;
+namespace Rxlisbest\PhpDate\Classes;
 
 use Rxlisbest\PhpDate\Interfaces\StandardInterface;
+use Rxlisbest\PhpDate\PhpDate;
 
 class Week extends PhpDate implements StandardInterface
 {
