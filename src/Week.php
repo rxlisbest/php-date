@@ -8,9 +8,9 @@
 
 namespace Rxlisbest\PhpDate;
 
-use Rxlisbest\PhpDate\Interfaces\BaseInterface;
+use Rxlisbest\PhpDate\Interfaces\StandardInterface;
 
-class Week extends PhpDate implements BaseInterface
+class Week extends PhpDate implements StandardInterface
 {
     public function begin()
     {

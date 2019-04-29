@@ -8,12 +8,8 @@
 
 namespace Rxlisbest\PhpDate;
 
-use Rxlisbest\PhpDate\Traits\Week;
-
 class PhpDate
 {
-    use Week;
-
     protected $inputTimestamp;
 
     protected $format = 'Y-m-d';

@@ -7,7 +7,7 @@
  */
 namespace Rxlisbest\PhpDate\Interfaces;
 
-interface BaseInterface
+interface StandardInterface
 {
     public function begin();
 
