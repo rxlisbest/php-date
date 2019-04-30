@@ -5,6 +5,7 @@
  * Date: 2019-04-28
  * Time: 20:07
  */
+namespace Rxlisbest\PhpDate\Interfaces;
 
 interface WeekInterface
 {

@@ -19,7 +19,7 @@ class PhpDate
     protected $outputTimestamp;
     
     protected $classes = [
-        'week' => 'Rxlisbest\PhpDate\Classes\Week'
+        'chineseWeek' => 'Rxlisbest\PhpDate\Classes\ChineseWeek'
     ];
 
     public function __construct($string = 0)

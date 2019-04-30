@@ -12,8 +12,14 @@ use Rxlisbest\PhpDate\Interfaces\StandardInterface;
 use Rxlisbest\PhpDate\Interfaces\WeekInterface;
 use Rxlisbest\PhpDate\PhpDate;
 
-class Week extends PhpDate implements StandardInterface, WeekInterface
+class ChineseWeek extends PhpDate implements StandardInterface, WeekInterface
 {
+    public function __construct($string = 0)
+    {
+        parent::__construct($string);
+
+    }
+
     public function begin()
     {
         $this->outputTimestamp = $this->inputTimestamp - ((date('w', $this->inputTimestamp) == 0 ? 7 : date('w', $this->inputTimestamp)) - 1) * 24 * 3600;
@@ -25,20 +31,21 @@ class Week extends PhpDate implements StandardInterface, WeekInterface
         $this->outputTimestamp = $this->inputTimestamp + (7 - (date('w', $this->inputTimestamp) == 0 ? 7 : date('w', $this->inputTimestamp))) * 24 * 3600;
         return $this->output();
     }
-    
+
     public function sunday()
     {
-        // TODO: Implement sunday() method.
+        return $this->end();
     }
 
     public function monday()
     {
-        // TODO: Implement monday() method.
+        return $this->begin();
     }
 
     public function tuesday()
     {
-        // TODO: Implement tuesday() method.
+        $this->outputTimestamp = $this->inputTimestamp - ((date('w', $this->inputTimestamp) == 0 ? 7 : date('w', $this->inputTimestamp)) - 1) * 24 * 3600;
+        return $this->output();
     }
 
     public function wednesday()
@@ -59,5 +66,10 @@ class Week extends PhpDate implements StandardInterface, WeekInterface
     public function saturday()
     {
         // TODO: Implement saturday() method.
+    }
+
+    protected function calculate()
+    {
+
     }
 }
