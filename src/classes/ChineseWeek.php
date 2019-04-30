@@ -14,6 +14,8 @@ use Rxlisbest\PhpDate\PhpDate;
 
 class ChineseWeek extends PhpDate implements StandardInterface, WeekInterface
 {
+    protected $diff = 1;
+
     public function __construct($string = 0)
     {
         parent::__construct($string);
@@ -22,14 +24,13 @@ class ChineseWeek extends PhpDate implements StandardInterface, WeekInterface
 
     public function begin()
     {
-        $this->outputTimestamp = $this->inputTimestamp - ((date('w', $this->inputTimestamp) == 0 ? 7 : date('w', $this->inputTimestamp)) - 1) * 24 * 3600;
-        return $this->output();
+        return $this->calculate();
     }
 
     public function end()
     {
-        $this->outputTimestamp = $this->inputTimestamp + (7 - (date('w', $this->inputTimestamp) == 0 ? 7 : date('w', $this->inputTimestamp))) * 24 * 3600;
-        return $this->output();
+        $this->diff = 7;
+        return $this->calculate();
     }
 
     public function sunday()
@@ -44,32 +45,37 @@ class ChineseWeek extends PhpDate implements StandardInterface, WeekInterface
 
     public function tuesday()
     {
-        $this->outputTimestamp = $this->inputTimestamp - ((date('w', $this->inputTimestamp) == 0 ? 7 : date('w', $this->inputTimestamp)) - 1) * 24 * 3600;
-        return $this->output();
+        $this->diff = 2;
+        return $this->calculate();
     }
 
     public function wednesday()
     {
-        // TODO: Implement wednesday() method.
+        $this->diff = 3;
+        return $this->calculate();
     }
 
     public function thursday()
     {
-        // TODO: Implement thursday() method.
+        $this->diff = 4;
+        return $this->calculate();
     }
 
     public function friday()
     {
-        // TODO: Implement friday() method.
+        $this->diff = 5;
+        return $this->calculate();
     }
 
     public function saturday()
     {
-        // TODO: Implement saturday() method.
+        $this->diff = 6;
+        return $this->calculate();
     }
 
     protected function calculate()
     {
-
+        $this->outputTimestamp = $this->inputTimestamp - ((date('w', $this->inputTimestamp) == 0 ? 7 : date('w', $this->inputTimestamp)) - $this->diff) * 24 * 3600;
+        return $this->output();
     }
 }
