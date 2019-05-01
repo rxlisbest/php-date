@@ -18,26 +18,9 @@ class PhpDate
 
     protected $outputTimestamp;
 
-    protected $classes = [
-        'chineseWeek' => 'Rxlisbest\PhpDate\Classes\ChineseWeek'
-    ];
-
-    protected $class;
-
     public function __construct($string = 0)
     {
         $this->setInputTimestamp($string);
-    }
-
-    public function __call($method, $args)
-    {
-        if (!isset($this->classes[$method])) {
-            throw new \Exception('Illegal parameter format');
-        }
-        if (!$this->class instanceof $this->classes[$method]) {
-            $this->class = new $this->classes[$method]($this->inputTimestamp);
-        }
-        return $this->class;
     }
 
     public function format($format)
@@ -66,7 +49,6 @@ class PhpDate
             }
             $this->inputTimestamp = $timestamp;
         }
-        var_dump($this->inputTimestamp);
     }
 
     protected function output()
