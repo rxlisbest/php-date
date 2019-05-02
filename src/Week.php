@@ -10,7 +10,6 @@ namespace Rxlisbest\PhpDate;
 
 use Rxlisbest\PhpDate\Interfaces\StandardInterface;
 use Rxlisbest\PhpDate\Interfaces\WeekInterface;
-use Rxlisbest\PhpDate\PhpDate;
 
 class Week extends PhpDate implements StandardInterface, WeekInterface
 {
