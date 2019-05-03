@@ -18,7 +18,6 @@ class ChineseWeek extends PhpDate implements StandardInterface, WeekInterface
     public function __construct($string = 0)
     {
         parent::__construct($string);
-
     }
 
     public function begin()
