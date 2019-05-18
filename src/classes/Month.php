@@ -6,7 +6,7 @@
  * Time: 09:11
  */
 
-namespace Rxlisbest\PhpDate;
+namespace Rxlisbest\PhpDate\Classes;
 
 use Rxlisbest\PhpDate\Interfaces\StandardInterface;
 
