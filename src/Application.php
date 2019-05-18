@@ -16,9 +16,10 @@ class Application extends Container
         Providers\MonthProvider::class,
     ];
 
-    public function __construct($config)
+    public function __construct($string)
     {
         parent::__construct();
+        $this['timestamp'] = $string;
         $this->registerProviders();
     }
 

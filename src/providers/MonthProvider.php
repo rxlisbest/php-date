@@ -15,7 +15,7 @@ class MonthProvider implements ServiceProviderInterface
     public function register(\Pimple\Container $pimple)
     {
         $pimple['month'] = function ($app) {
-            return new Month($app);
+            return new Month($app->timestamp);
         };
     }
 }
