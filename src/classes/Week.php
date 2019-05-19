@@ -23,6 +23,7 @@ class Week extends Base implements StandardInterface, WeekInterface
 
     public function begin()
     {
+        $this->diff = 0;
         return $this->calculate();
     }
 
@@ -34,6 +35,7 @@ class Week extends Base implements StandardInterface, WeekInterface
 
     public function sunday()
     {
+        $this->diff = 0;
         return $this->begin();
     }
 

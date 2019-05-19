@@ -22,6 +22,7 @@ class ChineseWeek extends Base implements StandardInterface, WeekInterface
 
     public function begin()
     {
+        $this->diff = 1;
         return $this->calculate();
     }
 
