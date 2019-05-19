@@ -6,12 +6,12 @@
  * Time: 09:12
  */
 
-namespace Rxlisbest\PhpDate;
+namespace Rxlisbest\PhpDate\Classes;
 
 use Rxlisbest\PhpDate\Interfaces\StandardInterface;
 use Rxlisbest\PhpDate\Interfaces\WeekInterface;
 
-class ChineseWeek extends PhpDate implements StandardInterface, WeekInterface
+class ChineseWeek extends Base implements StandardInterface, WeekInterface
 {
     protected $diff = 1;
 

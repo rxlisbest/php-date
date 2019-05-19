@@ -2,61 +2,44 @@
 /**
  * Created by PhpStorm.
  * User: apple
- * Date: 2019-04-21
- * Time: 22:10
+ * Date: 2019-05-18
+ * Time: 15:54
  */
 
 namespace Rxlisbest\PhpDate;
 
-class PhpDate
+use Pimple\Container;
+
+class PhpDate extends Container
 {
-    protected $inputTimestamp;
+    protected $providers = [
+        Providers\MonthProvider::class,
+        Providers\WeekProvider::class,
+        Providers\ChineseWeekProvider::class,
+        Providers\YearProvider::class,
+    ];
 
-    protected $format = 'Y-m-d';
-
-    protected $type = 'string'; // string or timestamp
-
-    protected $outputTimestamp;
-
-    public function __construct($string = 0)
+    public function __construct($string)
     {
-        $this->setInputTimestamp($string);
+        parent::__construct();
+        $this['timestamp'] = $string;
+        $this->registerProviders();
     }
 
-    public function format($format)
+    private function registerProviders()
     {
-        $this->format = $format;
-        return $this;
-    }
-
-    public function type($type)
-    {
-        $this->type = $type;
-        return $this;
-    }
-
-    protected function setInputTimestamp($string)
-    {
-        if ($string === 0) {
-            $string = time();
-        }
-        if (ctype_digit($string) && $string <= 2147483647) {
-            $this->inputTimestamp = $string;
-        } else {
-            $timestamp = strtotime($string);
-            if ($timestamp === false) {
-                throw new \Exception('Illegal parameter format');
-            }
-            $this->inputTimestamp = $timestamp;
+        foreach ($this->providers as $provider) {
+            $this->register(new $provider());
         }
     }
 
-    protected function output()
+    public function __get($id)
     {
-        if ($this->type === 'string') {
-            return date($this->format, $this->outputTimestamp);
-        } else {
-            return $this->outputTimestamp;
-        }
+        return $this->offsetGet($id);
+    }
+
+    public function __set($id, $value)
+    {
+        $this->offsetSet($id, $value);
     }
 }

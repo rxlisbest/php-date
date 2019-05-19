@@ -10,7 +10,7 @@ namespace Rxlisbest\PhpDate\Classes;
 
 use Rxlisbest\PhpDate\Interfaces\StandardInterface;
 
-class Month extends PhpDate implements StandardInterface
+class Month extends Base implements StandardInterface
 {
     public function begin()
     {

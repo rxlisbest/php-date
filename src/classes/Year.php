@@ -6,11 +6,11 @@
  * Time: 09:11
  */
 
-namespace Rxlisbest\PhpDate;
+namespace Rxlisbest\PhpDate\Classes;
 
 use Rxlisbest\PhpDate\Interfaces\StandardInterface;
 
-class Year extends PhpDate implements StandardInterface
+class Year extends Base implements StandardInterface
 {
     public function begin()
     {

@@ -8,7 +8,7 @@
 
 namespace Rxlisbest\PhpDate\Classes;
 
-class PhpDate
+class Base
 {
     protected $inputTimestamp;
 
