@@ -29,7 +29,7 @@
     $month->format('Y-m-d')->begin(); // 2019-05-01
     $month->format('Y-m-d')->end(); // 2019-05-31
     
-    // 月
+    // 年
     $year = (new PhpDate($timestamp))->year;
     $year->format('Y-m-d')->begin(); // 2019-01-01
     $year->format('Y-m-d')->end(); // 2019-12-31
