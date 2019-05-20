@@ -1,4 +1,8 @@
 # php-date
+## 安装
+- composer require rxlisbest/php-date
+
+## 用法
 ```$xslt
     $timestamp = 1558176210; // 2019-05-18 18:43:30
     
