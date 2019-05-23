@@ -22,24 +22,24 @@ class Quarter extends Base implements StandardInterface
 
     public function today()
     {
-        $this->outputTimestamp = $this->timestamp;
+        $this->outputTimestamp = $this->outputTimestamp;
         return $this->output();
     }
 
     public function begin()
     {
-        $this->outputTimestamp = strtotime(date('Y-m-d H:i:s', mktime(date('H', $this->timestamp), date('i', $this->timestamp), date('s', $this->timestamp), ($this->season * 3 - 3 + 1), 1, date('Y', $this->timestamp))));
+        $this->outputTimestamp = strtotime(date('Y-m-d H:i:s', mktime(date('H', $this->outputTimestamp), date('i', $this->outputTimestamp), date('s', $this->outputTimestamp), ($this->season * 3 - 3 + 1), 1, date('Y', $this->outputTimestamp))));
         return $this->output();
     }
 
     public function end()
     {
-        $this->outputTimestamp = strtotime(date('Y-m-d H:i:s', mktime(date('H', $this->timestamp), date('i', $this->timestamp), date('s', $this->timestamp), $this->season * 3, date('t', mktime(0, 0, 0, $this->season * 3, 1, date('Y', $this->timestamp))), date('Y', $this->timestamp))));
+        $this->outputTimestamp = strtotime(date('Y-m-d H:i:s', mktime(date('H', $this->outputTimestamp), date('i', $this->outputTimestamp), date('s', $this->outputTimestamp), $this->season * 3, date('t', mktime(0, 0, 0, $this->season * 3, 1, date('Y', $this->outputTimestamp))), date('Y', $this->outputTimestamp))));
         return $this->output();
     }
 
     protected function setSeason()
     {
-        $this->season = ceil(date('m', $this->timestamp) / 3);
+        $this->season = ceil(date('m', $this->outputTimestamp) / 3);
     }
 }

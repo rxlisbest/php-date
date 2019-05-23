@@ -12,8 +12,6 @@ class Base
 {
     protected $inputTimestamp; // input timestamp
 
-    protected $timestamp; // timestamp in calculate
-
     protected $format = 'Y-m-d';
 
     protected $type = 'string'; // string or timestamp
@@ -51,16 +49,18 @@ class Base
             }
             $this->inputTimestamp = $timestamp;
         }
-        $this->timestamp = $this->inputTimestamp;
+        $this->outputTimestamp = $this->inputTimestamp;
     }
 
     protected function output()
     {
-        $this->timestamp = $this->inputTimestamp;
         if ($this->type === 'string') {
-            return date($this->format, $this->outputTimestamp);
+            $output = date($this->format, $this->outputTimestamp);
         } else {
-            return $this->outputTimestamp;
+            $output = $this->outputTimestamp;
         }
+        $this->outputTimestamp = $this->inputTimestamp;
+        return $output;
+
     }
 }

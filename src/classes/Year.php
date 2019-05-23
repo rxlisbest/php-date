@@ -14,19 +14,19 @@ class Year extends Base implements StandardInterface
 {
     public function today()
     {
-        $this->outputTimestamp = $this->timestamp;
+        $this->outputTimestamp = $this->outputTimestamp;
         return $this->output();
     }
 
     public function begin()
     {
-        $this->outputTimestamp = strtotime(date('Y-01-01 H:i:s', $this->timestamp));
+        $this->outputTimestamp = strtotime(date('Y-01-01 H:i:s', $this->outputTimestamp));
         return $this->output();
     }
 
     public function end()
     {
-        $this->outputTimestamp = strtotime(date('Y-12-31 H:i:s', $this->timestamp));
+        $this->outputTimestamp = strtotime(date('Y-12-31 H:i:s', $this->outputTimestamp));
         return $this->output();
     }
 }

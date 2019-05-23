@@ -22,7 +22,7 @@ class ChineseWeek extends Base implements StandardInterface, WeekInterface
 
     public function today()
     {
-        $this->outputTimestamp = $this->timestamp;
+        $this->outputTimestamp = $this->outputTimestamp;
         return $this->output();
     }
 
@@ -80,7 +80,7 @@ class ChineseWeek extends Base implements StandardInterface, WeekInterface
 
     protected function calculate()
     {
-        $this->outputTimestamp = $this->timestamp - ((date('w', $this->timestamp) == 0 ? 7 : date('w', $this->timestamp)) - $this->diff) * 24 * 3600;
+        $this->outputTimestamp = $this->outputTimestamp - ((date('w', $this->outputTimestamp) == 0 ? 7 : date('w', $this->outputTimestamp)) - $this->diff) * 24 * 3600;
         return $this->output();
     }
 }
