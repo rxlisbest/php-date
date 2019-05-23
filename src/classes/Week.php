@@ -76,7 +76,7 @@ class Week extends Base implements StandardInterface, WeekInterface
 
     protected function calculate()
     {
-        $this->outputTimestamp = $this->inputTimestamp - ((date('w', $this->inputTimestamp)) - $this->diff) * 24 * 3600;
+        $this->outputTimestamp = $this->timestamp - ((date('w', $this->timestamp)) - $this->diff) * 24 * 3600;
         return $this->output();
     }
 }
