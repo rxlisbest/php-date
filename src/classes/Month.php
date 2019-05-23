@@ -14,13 +14,13 @@ class Month extends Base implements StandardInterface
 {
     public function begin()
     {
-        $this->outputTimestamp = strtotime(date('Y-m-01', $this->inputTimestamp));
+        $this->outputTimestamp = strtotime(date('Y-m-01 H:i:s', $this->inputTimestamp));
         return $this->output();
     }
 
     public function end()
     {
-        $this->outputTimestamp = strtotime(date('Y-m-d', strtotime(date('Y-m-01', $this->inputTimestamp) . ' + 1 months - 1 days')));
+        $this->outputTimestamp = strtotime(date('Y-m-d H:i:s', strtotime(date('Y-m-01', $this->inputTimestamp) . ' + 1 months - 1 days')));
         return $this->output();
     }
 }

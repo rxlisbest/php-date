@@ -15,6 +15,7 @@ class PhpDate extends Container
     protected $providers = [
         Providers\MonthProvider::class,
         Providers\WeekProvider::class,
+        Providers\QuarterProvider::class,
         Providers\ChineseWeekProvider::class,
         Providers\YearProvider::class,
     ];

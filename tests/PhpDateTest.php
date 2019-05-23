@@ -61,4 +61,13 @@ class PhpDateTest extends TestCase
         $this->assertEquals($year->format('Y-m-d')->begin(), '2019-01-01');
         $this->assertEquals($year->format('Y-m-d')->end(), '2019-12-31');
     }
+
+    public function testQuarter()
+    {
+        $timestamp = 1558176210; // 2019-05-18 18:43:30
+
+        $quarter = (new PhpDate($timestamp))->quarter;
+        $this->assertEquals($quarter->format('Y-m-d')->begin(), '2019-04-01');
+        $this->assertEquals($quarter->format('Y-m-d')->end(), '2019-06-30');
+    }
 }
