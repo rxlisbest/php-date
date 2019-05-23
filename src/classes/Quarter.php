@@ -20,6 +20,12 @@ class Quarter extends Base implements StandardInterface
         $this->setSeason();
     }
 
+    public function today()
+    {
+        $this->outputTimestamp = $this->timestamp;
+        return $this->output();
+    }
+
     public function begin()
     {
         $this->outputTimestamp = strtotime(date('Y-m-d H:i:s', mktime(date('H', $this->timestamp), date('i', $this->timestamp), date('s', $this->timestamp), ($this->season * 3 - 3 + 1), 1, date('Y', $this->timestamp))));

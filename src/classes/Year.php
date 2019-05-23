@@ -12,6 +12,12 @@ use Rxlisbest\PhpDate\Interfaces\StandardInterface;
 
 class Year extends Base implements StandardInterface
 {
+    public function today()
+    {
+        $this->outputTimestamp = $this->timestamp;
+        return $this->output();
+    }
+
     public function begin()
     {
         $this->outputTimestamp = strtotime(date('Y-01-01 H:i:s', $this->timestamp));

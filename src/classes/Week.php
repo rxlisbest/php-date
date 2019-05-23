@@ -21,6 +21,12 @@ class Week extends Base implements StandardInterface, WeekInterface
 
     }
 
+    public function today()
+    {
+        $this->outputTimestamp = $this->timestamp;
+        return $this->output();
+    }
+
     public function begin()
     {
         $this->diff = 0;

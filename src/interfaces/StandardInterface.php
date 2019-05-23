@@ -11,5 +11,7 @@ interface StandardInterface
 {
     public function begin();
 
+    public function today();
+
     public function end();
 }

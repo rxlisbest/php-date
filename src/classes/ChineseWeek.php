@@ -20,6 +20,12 @@ class ChineseWeek extends Base implements StandardInterface, WeekInterface
         parent::__construct($string);
     }
 
+    public function today()
+    {
+        $this->outputTimestamp = $this->timestamp;
+        return $this->output();
+    }
+
     public function begin()
     {
         $this->diff = 1;
