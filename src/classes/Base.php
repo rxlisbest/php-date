@@ -61,6 +61,5 @@ class Base
         }
         $this->outputTimestamp = $this->inputTimestamp;
         return $output;
-
     }
 }

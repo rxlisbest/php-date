@@ -32,13 +32,29 @@ class Month extends Base implements StandardInterface
 
     public function last($number = 1)
     {
-        $this->outputTimestamp -= 7 * 24 * 3600 * $number;
+        $m = date('m', $this->outputTimestamp);
+        $t = date('t', strtotime(date('Y-m-d H:i:s', mktime(date('H', $this->outputTimestamp), date('i', $this->outputTimestamp), date('s', $this->outputTimestamp), $m - $number, 1, date('Y', $this->outputTimestamp)))));
+        $d = date('d', $this->outputTimestamp);
+        if ($d > $t) {
+            $d = $t;
+        }
+
+        $this->outputTimestamp = strtotime(date('Y-m-d H:i:s', mktime(date('H', $this->outputTimestamp), date('i', $this->outputTimestamp), date('s', $this->outputTimestamp), $m - $number, $d, date('Y', $this->outputTimestamp))));
+        
         return $this;
     }
 
     public function next($number = 1)
     {
-        $this->outputTimestamp += 7 * 24 * 3600 * $number;
+        $m = date('m', $this->outputTimestamp);
+        $t = date('t', strtotime(date('Y-m-d H:i:s', mktime(date('H', $this->outputTimestamp), date('i', $this->outputTimestamp), date('s', $this->outputTimestamp), $m + $number, 1, date('Y', $this->outputTimestamp)))));
+        $d = date('d', $this->outputTimestamp);
+        if ($d > $t) {
+            $d = $t;
+        }
+
+        $this->outputTimestamp = strtotime(date('Y-m-d H:i:s', mktime(date('H', $this->outputTimestamp), date('i', $this->outputTimestamp), date('s', $this->outputTimestamp), $m + $number, $d, date('Y', $this->outputTimestamp))));
+
         return $this;
     }
 }

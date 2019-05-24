@@ -32,13 +32,13 @@ class Year extends Base implements StandardInterface
 
     public function last($number = 1)
     {
-        $this->outputTimestamp = strtotime(date('Y-m-d H:i:s', $this->outputTimestamp) . ' - 1 years');
+        $this->outputTimestamp = strtotime(date('Y-m-d H:i:s', $this->outputTimestamp) . " - ${number} years");
         return $this;
     }
 
     public function next($number = 1)
     {
-        $this->outputTimestamp = strtotime(date('Y-m-d H:i:s', $this->outputTimestamp) . ' + 1 years');
+        $this->outputTimestamp = strtotime(date('Y-m-d H:i:s', $this->outputTimestamp) . " + ${number} years");
         return $this;
     }
 }

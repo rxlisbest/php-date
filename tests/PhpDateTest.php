@@ -43,6 +43,9 @@ class PhpDateTest extends TestCase
         $this->assertEquals($week->format('Y-m-d')->thursday(), '2018-05-24');
         $this->assertEquals($week->format('Y-m-d')->friday(), '2018-05-25');
         $this->assertEquals($week->format('Y-m-d')->saturday(), '2018-05-26');
+
+        $this->assertEquals($week->format('Y-m-d')->last()->today(), '2018-05-16');
+        $this->assertEquals($week->format('Y-m-d')->last()->begin(), '2018-05-13');
     }
 
     public function testChineseWeek()
@@ -83,11 +86,19 @@ class PhpDateTest extends TestCase
         $this->assertEquals($month->format('Y-m-d')->begin(), '2019-05-01');
         $this->assertEquals($month->format('Y-m-d')->end(), '2019-05-31');
 
+        $this->assertEquals($month->format('Y-m-d')->next()->today(), '2019-06-18');
+        $this->assertEquals($month->format('Y-m-d')->last()->today(), '2019-04-18');
+
         $timestamp = 1527071592; // 2018-05-23 18:33:12
         $month = (new PhpDate($timestamp))->month;
         $this->assertEquals($month->format('Y-m-d')->today(), '2018-05-23');
         $this->assertEquals($month->format('Y-m-d')->begin(), '2018-05-01');
         $this->assertEquals($month->format('Y-m-d')->end(), '2018-05-31');
+
+        $timestamp = '2019-05-31';
+        $month = (new PhpDate($timestamp))->month;
+        $this->assertEquals($month->format('Y-m-d')->next()->today(), '2019-06-30');
+        $this->assertEquals($month->format('Y-m-d')->last()->today(), '2019-04-30');
     }
 
     public function testYear()
@@ -107,6 +118,9 @@ class PhpDateTest extends TestCase
         $this->assertEquals($year->format('Y-m-d')->today(), '2018-05-23');
         $this->assertEquals($year->format('Y-m-d')->begin(), '2018-01-01');
         $this->assertEquals($year->format('Y-m-d')->end(), '2018-12-31');
+
+        $this->assertEquals($year->format('Y-m-d')->last(2)->today(), '2016-05-23');
+        $this->assertEquals($year->format('Y-m-d')->last(2)->begin(), '2016-01-01');
     }
 
     public function testQuarter()
@@ -118,10 +132,19 @@ class PhpDateTest extends TestCase
         $this->assertEquals($quarter->format('Y-m-d')->begin(), '2019-04-01');
         $this->assertEquals($quarter->format('Y-m-d')->end(), '2019-06-30');
 
+        $this->assertEquals((new PhpDate('2018-11-18'))->quarter->format('Y-m-d')->begin(), '2018-10-01');
+        $this->assertEquals($quarter->format('Y-m-d')->last(2)->begin(), '2018-10-01');
+        $this->assertEquals($quarter->format('Y-m-d')->last(2)->today(), '2018-11-18');
+
         $timestamp = 1527071592; // 2018-05-23 18:33:12
         $quarter = (new PhpDate($timestamp))->quarter;
         $this->assertEquals($quarter->format('Y-m-d')->today(), '2018-05-23');
         $this->assertEquals($quarter->format('Y-m-d')->begin(), '2018-04-01');
         $this->assertEquals($quarter->format('Y-m-d')->end(), '2018-06-30');
+
+        $timestamp = '2018-05-31';
+        $quarter = (new PhpDate($timestamp))->quarter;
+        $this->assertEquals($quarter->format('Y-m-d')->next()->today(), '2018-08-31');
+        $this->assertEquals($quarter->format('Y-m-d')->last()->today(), '2018-02-28');
     }
 }

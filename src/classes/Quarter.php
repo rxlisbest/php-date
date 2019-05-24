@@ -17,7 +17,6 @@ class Quarter extends Base implements StandardInterface
     public function __construct($string = 0)
     {
         parent::__construct($string);
-        $this->setSeason();
     }
 
     public function today()
@@ -28,12 +27,14 @@ class Quarter extends Base implements StandardInterface
 
     public function begin()
     {
+        $this->setSeason();
         $this->outputTimestamp = strtotime(date('Y-m-d H:i:s', mktime(date('H', $this->outputTimestamp), date('i', $this->outputTimestamp), date('s', $this->outputTimestamp), ($this->season * 3 - 3 + 1), 1, date('Y', $this->outputTimestamp))));
         return $this->output();
     }
 
     public function end()
     {
+        $this->setSeason();
         $this->outputTimestamp = strtotime(date('Y-m-d H:i:s', mktime(date('H', $this->outputTimestamp), date('i', $this->outputTimestamp), date('s', $this->outputTimestamp), $this->season * 3, date('t', mktime(0, 0, 0, $this->season * 3, 1, date('Y', $this->outputTimestamp))), date('Y', $this->outputTimestamp))));
         return $this->output();
     }
@@ -45,13 +46,29 @@ class Quarter extends Base implements StandardInterface
 
     public function last($number = 1)
     {
-        $this->outputTimestamp -= 7 * 24 * 3600 * $number;
+        $m = date('m', $this->outputTimestamp);
+        $t = date('t', strtotime(date('Y-m-d H:i:s', mktime(date('H', $this->outputTimestamp), date('i', $this->outputTimestamp), date('s', $this->outputTimestamp), $m - $number * 3, 1, date('Y', $this->outputTimestamp)))));
+        $d = date('d', $this->outputTimestamp);
+        if ($d > $t) {
+            $d = $t;
+        }
+
+        $this->outputTimestamp = strtotime(date('Y-m-d H:i:s', mktime(date('H', $this->outputTimestamp), date('i', $this->outputTimestamp), date('s', $this->outputTimestamp), $m - $number * 3, $d, date('Y', $this->outputTimestamp))));
+
         return $this;
     }
 
     public function next($number = 1)
     {
-        $this->outputTimestamp += 7 * 24 * 3600 * $number;
+        $m = date('m', $this->outputTimestamp);
+        $t = date('t', strtotime(date('Y-m-d H:i:s', mktime(date('H', $this->outputTimestamp), date('i', $this->outputTimestamp), date('s', $this->outputTimestamp), $m + $number * 3, 1, date('Y', $this->outputTimestamp)))));
+        $d = date('d', $this->outputTimestamp);
+        if ($d > $t) {
+            $d = $t;
+        }
+
+        $this->outputTimestamp = strtotime(date('Y-m-d H:i:s', mktime(date('H', $this->outputTimestamp), date('i', $this->outputTimestamp), date('s', $this->outputTimestamp), $m + $number * 3, $d, date('Y', $this->outputTimestamp))));
+
         return $this;
     }
 }
