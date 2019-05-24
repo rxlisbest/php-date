@@ -14,4 +14,8 @@ interface StandardInterface
     public function today();
 
     public function end();
+
+    public function last($number = 1);
+
+    public function next($number = 1);
 }

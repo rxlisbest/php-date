@@ -29,4 +29,16 @@ class Year extends Base implements StandardInterface
         $this->outputTimestamp = strtotime(date('Y-12-31 H:i:s', $this->outputTimestamp));
         return $this->output();
     }
+
+    public function last($number = 1)
+    {
+        $this->outputTimestamp = strtotime(date('Y-m-d H:i:s', $this->outputTimestamp) . ' - 1 years');
+        return $this;
+    }
+
+    public function next($number = 1)
+    {
+        $this->outputTimestamp = strtotime(date('Y-m-d H:i:s', $this->outputTimestamp) . ' + 1 years');
+        return $this;
+    }
 }

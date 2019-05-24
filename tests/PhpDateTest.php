@@ -27,6 +27,10 @@ class PhpDateTest extends TestCase
         $this->assertEquals($week->format('Y-m-d')->friday(), '2019-05-17');
         $this->assertEquals($week->format('Y-m-d')->saturday(), '2019-05-18');
 
+        $this->assertEquals($week->format('Y-m-d')->next()->today(), '2019-05-25');
+        $this->assertEquals($week->format('Y-m-d')->next()->begin(), '2019-05-19');
+
+
         $timestamp = 1527071592; // 2018-05-23 18:33:12
         $week = (new PhpDate($timestamp))->week;
         $this->assertEquals($week->format('Y-m-d')->today(), '2018-05-23');
@@ -94,6 +98,9 @@ class PhpDateTest extends TestCase
         $this->assertEquals($year->format('Y-m-d')->today(), '2019-05-18');
         $this->assertEquals($year->format('Y-m-d')->begin(), '2019-01-01');
         $this->assertEquals($year->format('Y-m-d')->end(), '2019-12-31');
+
+        $this->assertEquals($year->format('Y-m-d')->next()->today(), '2020-05-18');
+        $this->assertEquals($year->format('Y-m-d')->next()->begin(), '2020-01-01');
 
         $timestamp = 1527071592; // 2018-05-23 18:33:12
         $year = (new PhpDate($timestamp))->year;

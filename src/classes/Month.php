@@ -29,4 +29,16 @@ class Month extends Base implements StandardInterface
         $this->outputTimestamp = strtotime(date('Y-m-d H:i:s', strtotime(date('Y-m-01', $this->outputTimestamp) . ' + 1 months - 1 days')));
         return $this->output();
     }
+
+    public function last($number = 1)
+    {
+        $this->outputTimestamp -= 7 * 24 * 3600 * $number;
+        return $this;
+    }
+
+    public function next($number = 1)
+    {
+        $this->outputTimestamp += 7 * 24 * 3600 * $number;
+        return $this;
+    }
 }

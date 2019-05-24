@@ -42,4 +42,16 @@ class Quarter extends Base implements StandardInterface
     {
         $this->season = ceil(date('m', $this->outputTimestamp) / 3);
     }
+
+    public function last($number = 1)
+    {
+        $this->outputTimestamp -= 7 * 24 * 3600 * $number;
+        return $this;
+    }
+
+    public function next($number = 1)
+    {
+        $this->outputTimestamp += 7 * 24 * 3600 * $number;
+        return $this;
+    }
 }

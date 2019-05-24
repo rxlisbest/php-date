@@ -83,4 +83,16 @@ class ChineseWeek extends Base implements StandardInterface, WeekInterface
         $this->outputTimestamp = $this->outputTimestamp - ((date('w', $this->outputTimestamp) == 0 ? 7 : date('w', $this->outputTimestamp)) - $this->diff) * 24 * 3600;
         return $this->output();
     }
+    
+    public function last($number = 1)
+    {
+        $this->outputTimestamp -= 7 * 24 * 3600 * $number;
+        return $this;
+    }
+
+    public function next($number = 1)
+    {
+        $this->outputTimestamp += 7 * 24 * 3600 * $number;
+        return $this;
+    }
 }
