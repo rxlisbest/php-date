@@ -14,7 +14,10 @@ class PhpDateTest extends TestCase
 {
     public function testWeek()
     {
+
         $timestamp = 1558176210; // 2019-05-18 18:43:30
+        $this->assertInstanceOf(\Rxlisbest\PhpDate\Classes\Week::class, (new PhpDate($timestamp))->week);
+        
         $week = (new PhpDate($timestamp))->week;
         $this->assertEquals($week->format('Y-m-d')->today(), '2019-05-18');
         $this->assertEquals($week->format('Y-m-d')->begin(), '2019-05-12');
