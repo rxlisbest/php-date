@@ -37,7 +37,7 @@ class Base
 
     protected function setInputTimestamp($string)
     {
-        if ($string === 0) {
+        if ($string === '') {
             $string = time();
         }
         if (ctype_digit($string) && $string <= 2147483647) {

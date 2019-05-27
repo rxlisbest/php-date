@@ -20,7 +20,7 @@ class PhpDate extends Container
         Providers\YearProvider::class,
     ];
 
-    public function __construct($string)
+    public function __construct($string = '')
     {
         parent::__construct();
         $this['timestamp'] = $string;
