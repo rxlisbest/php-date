@@ -12,43 +12,13 @@ use Rxlisbest\PhpDate\PhpDate;
 
 class PhpDateTest extends TestCase
 {
-    public function testWeek()
+    public function testIndex()
     {
-
-        $timestamp = 1558176210; // 2019-05-18 18:43:30
-        $this->assertInstanceOf(\Rxlisbest\PhpDate\Classes\Week::class, (new PhpDate($timestamp))->week);
-        
-        $week = (new PhpDate($timestamp))->week;
-        $this->assertEquals($week->format('Y-m-d')->today(), '2019-05-18');
-        $this->assertEquals($week->format('Y-m-d')->begin(), '2019-05-12');
-        $this->assertEquals($week->format('Y-m-d')->end(), '2019-05-18');
-        $this->assertEquals($week->format('Y-m-d')->sunday(), '2019-05-12');
-        $this->assertEquals($week->format('Y-m-d')->monday(), '2019-05-13');
-        $this->assertEquals($week->format('Y-m-d')->tuesday(), '2019-05-14');
-        $this->assertEquals($week->format('Y-m-d')->wednesday(), '2019-05-15');
-        $this->assertEquals($week->format('Y-m-d')->thursday(), '2019-05-16');
-        $this->assertEquals($week->format('Y-m-d')->friday(), '2019-05-17');
-        $this->assertEquals($week->format('Y-m-d')->saturday(), '2019-05-18');
-
-        $this->assertEquals($week->format('Y-m-d')->next()->today(), '2019-05-25');
-        $this->assertEquals($week->format('Y-m-d')->next()->begin(), '2019-05-19');
-
-
-        $timestamp = 1527071592; // 2018-05-23 18:33:12
-        $week = (new PhpDate($timestamp))->week;
-        $this->assertEquals($week->format('Y-m-d')->today(), '2018-05-23');
-        $this->assertEquals($week->format('Y-m-d')->begin(), '2018-05-20');
-        $this->assertEquals($week->format('Y-m-d')->end(), '2018-05-26');
-        $this->assertEquals($week->format('Y-m-d')->sunday(), '2018-05-20');
-        $this->assertEquals($week->format('Y-m-d')->monday(), '2018-05-21');
-        $this->assertEquals($week->format('Y-m-d')->tuesday(), '2018-05-22');
-        $this->assertEquals($week->format('Y-m-d')->wednesday(), '2018-05-23');
-        $this->assertEquals($week->format('Y-m-d')->thursday(), '2018-05-24');
-        $this->assertEquals($week->format('Y-m-d')->friday(), '2018-05-25');
-        $this->assertEquals($week->format('Y-m-d')->saturday(), '2018-05-26');
-
-        $this->assertEquals($week->format('Y-m-d')->last()->today(), '2018-05-16');
-        $this->assertEquals($week->format('Y-m-d')->last()->begin(), '2018-05-13');
+        $this->assertInstanceOf(\Rxlisbest\PhpDate\Classes\Week::class, (new PhpDate())->week);
+        $this->assertInstanceOf(\Rxlisbest\PhpDate\Classes\Week::class, (new PhpDate())->week);
+        $this->assertInstanceOf(\Rxlisbest\PhpDate\Classes\Week::class, (new PhpDate())->week);
+        $this->assertInstanceOf(\Rxlisbest\PhpDate\Classes\Week::class, (new PhpDate())->week);
+        $this->assertInstanceOf(\Rxlisbest\PhpDate\Classes\Week::class, (new PhpDate())->week);
     }
 
     public function testChineseWeek()
