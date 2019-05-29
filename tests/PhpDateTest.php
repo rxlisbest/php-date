@@ -21,59 +21,6 @@ class PhpDateTest extends TestCase
         $this->assertInstanceOf(\Rxlisbest\PhpDate\Classes\Year::class, (new PhpDate())->year);
     }
 
-    public function testChineseWeek()
-    {
-        $timestamp = 1558176210; // 2019-05-18 18:43:30
-        $chineseWeek = (new PhpDate($timestamp))->chineseWeek;
-        $this->assertEquals($chineseWeek->format('Y-m-d')->today(), '2019-05-18');
-        $this->assertEquals($chineseWeek->format('Y-m-d')->begin(), '2019-05-13');
-        $this->assertEquals($chineseWeek->format('Y-m-d')->end(), '2019-05-19');
-        $this->assertEquals($chineseWeek->format('Y-m-d')->monday(), '2019-05-13');
-        $this->assertEquals($chineseWeek->format('Y-m-d')->tuesday(), '2019-05-14');
-        $this->assertEquals($chineseWeek->format('Y-m-d')->wednesday(), '2019-05-15');
-        $this->assertEquals($chineseWeek->format('Y-m-d')->thursday(), '2019-05-16');
-        $this->assertEquals($chineseWeek->format('Y-m-d')->friday(), '2019-05-17');
-        $this->assertEquals($chineseWeek->format('Y-m-d')->saturday(), '2019-05-18');
-        $this->assertEquals($chineseWeek->format('Y-m-d')->sunday(), '2019-05-19');
-
-        $timestamp = 1527071592; // 2018-05-23 18:33:12
-        $chineseWeek = (new PhpDate($timestamp))->chineseWeek;
-        $this->assertEquals($chineseWeek->format('Y-m-d')->today(), '2018-05-23');
-        $this->assertEquals($chineseWeek->format('Y-m-d')->begin(), '2018-05-21');
-        $this->assertEquals($chineseWeek->format('Y-m-d')->end(), '2018-05-27');
-        $this->assertEquals($chineseWeek->format('Y-m-d')->monday(), '2018-05-21');
-        $this->assertEquals($chineseWeek->format('Y-m-d')->tuesday(), '2018-05-22');
-        $this->assertEquals($chineseWeek->format('Y-m-d')->wednesday(), '2018-05-23');
-        $this->assertEquals($chineseWeek->format('Y-m-d')->thursday(), '2018-05-24');
-        $this->assertEquals($chineseWeek->format('Y-m-d')->friday(), '2018-05-25');
-        $this->assertEquals($chineseWeek->format('Y-m-d')->saturday(), '2018-05-26');
-        $this->assertEquals($chineseWeek->format('Y-m-d')->sunday(), '2018-05-27');
-    }
-
-    public function testMonth()
-    {
-        $timestamp = 1558176210; // 2019-05-18 18:43:30
-
-        $month = (new PhpDate($timestamp))->month;
-        $this->assertEquals($month->format('Y-m-d')->today(), '2019-05-18');
-        $this->assertEquals($month->format('Y-m-d')->begin(), '2019-05-01');
-        $this->assertEquals($month->format('Y-m-d')->end(), '2019-05-31');
-
-        $this->assertEquals($month->format('Y-m-d')->next()->today(), '2019-06-18');
-        $this->assertEquals($month->format('Y-m-d')->last()->today(), '2019-04-18');
-
-        $timestamp = 1527071592; // 2018-05-23 18:33:12
-        $month = (new PhpDate($timestamp))->month;
-        $this->assertEquals($month->format('Y-m-d')->today(), '2018-05-23');
-        $this->assertEquals($month->format('Y-m-d')->begin(), '2018-05-01');
-        $this->assertEquals($month->format('Y-m-d')->end(), '2018-05-31');
-
-        $timestamp = '2019-05-31';
-        $month = (new PhpDate($timestamp))->month;
-        $this->assertEquals($month->format('Y-m-d')->next()->today(), '2019-06-30');
-        $this->assertEquals($month->format('Y-m-d')->last()->today(), '2019-04-30');
-    }
-
     public function testYear()
     {
         $timestamp = 1558176210; // 2019-05-18 18:43:30

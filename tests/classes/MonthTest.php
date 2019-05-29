@@ -45,6 +45,5 @@ class MonthTest extends TestCase
         $this->assertEquals($month->last(3)->today(), '2018-02-28');
         $this->assertEquals($month->last(3)->begin(), '2018-02-01');
         $this->assertEquals($month->last(3)->end(), '2018-02-28');
-
     }
 }
