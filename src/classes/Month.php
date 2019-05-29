@@ -46,15 +46,14 @@ class Month extends Base implements StandardInterface
 
     public function next($number = 1)
     {
-        $m = date('m', $this->outputTimestamp);
-        $t = date('t', strtotime(date('Y-m-d H:i:s', mktime(date('H', $this->outputTimestamp), date('i', $this->outputTimestamp), date('s', $this->outputTimestamp), $m + $number, 1, date('Y', $this->outputTimestamp)))));
-        $d = date('d', $this->outputTimestamp);
+        $m = (int)date('m', $this->outputTimestamp);
+        $t = (int)date('t', strtotime(date('Y-m-d H:i:s', mktime(date('H', $this->outputTimestamp), date('i', $this->outputTimestamp), date('s', $this->outputTimestamp), $m + $number, 1, date('Y', $this->outputTimestamp)))));
+        $d = (int)date('d', $this->outputTimestamp);
         if ($d > $t) {
             $d = $t;
         }
 
         $this->outputTimestamp = strtotime(date('Y-m-d H:i:s', mktime(date('H', $this->outputTimestamp), date('i', $this->outputTimestamp), date('s', $this->outputTimestamp), $m + $number, $d, date('Y', $this->outputTimestamp))));
-
         return $this;
     }
 }
