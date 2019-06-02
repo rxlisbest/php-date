@@ -56,9 +56,4 @@ class Month extends Base implements StandardInterface
         $this->outputTimestamp = strtotime(date('Y-m-d H:i:s', mktime(date('H', $this->outputTimestamp), date('i', $this->outputTimestamp), date('s', $this->outputTimestamp), $m + $number, $d, date('Y', $this->outputTimestamp))));
         return $this;
     }
-
-    public function diff($string)
-    {
-
-    }
 }

@@ -8,6 +8,8 @@
 
 namespace Rxlisbest\PhpDate\Classes;
 
+use Rxlisbest\PhpDate\PhpDateHelper;
+
 class Base
 {
     protected $inputTimestamp; // input timestamp
@@ -40,16 +42,7 @@ class Base
         if ($string === '') {
             $string = time();
         }
-        if (ctype_digit($string) && $string <= 2147483647) {
-            $this->inputTimestamp = $string;
-        } else {
-            $timestamp = strtotime($string);
-            if ($timestamp === false) {
-                throw new \Exception('Illegal parameter format');
-            }
-            $this->inputTimestamp = $timestamp;
-        }
-        $this->outputTimestamp = $this->inputTimestamp;
+        $this->outputTimestamp = $this->inputTimestamp = PhpDateHelper::getTimestamp($string);
     }
 
     protected function output()
