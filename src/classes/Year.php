@@ -41,4 +41,10 @@ class Year extends Base implements StandardInterface
         $this->outputTimestamp = strtotime(date('Y-m-d H:i:s', $this->outputTimestamp) . " + ${number} years");
         return $this;
     }
+
+    public function diff($string)
+    {
+        $timestamp = PhpDateHelper::getTimestamp($string);
+        return floor(abs($timestamp - $this->inputTimestamp) / (7 * 24 * 3600));
+    }
 }

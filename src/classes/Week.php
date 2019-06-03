@@ -97,4 +97,10 @@ class Week extends Base implements StandardInterface, WeekInterface
         $this->outputTimestamp += 7 * 24 * 3600 * $number;
         return $this;
     }
+
+    public function diff($string)
+    {
+        $timestamp = PhpDateHelper::getTimestamp($string);
+        return floor(abs($timestamp - $this->inputTimestamp) / (7 * 24 * 3600));
+    }
 }

@@ -71,4 +71,10 @@ class Quarter extends Base implements StandardInterface
 
         return $this;
     }
+
+    public function diff($string)
+    {
+        $timestamp = PhpDateHelper::getTimestamp($string);
+        return floor(abs($timestamp - $this->inputTimestamp) / (7 * 24 * 3600));
+    }
 }

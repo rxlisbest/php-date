@@ -18,4 +18,6 @@ interface StandardInterface
     public function last($number = 1);
 
     public function next($number = 1);
+
+    public function diff($string);
 }
