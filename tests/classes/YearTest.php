@@ -37,5 +37,14 @@ class YearTest extends TestCase
         $this->assertEquals($year->last(2)->today(), '2017-05-18');
         $this->assertEquals($year->last(2)->begin(), '2017-01-01');
         $this->assertEquals($year->last(2)->end(), '2017-12-31');
+
+        $timestamp = '2016-02-29';
+        $year = (new PhpDate($timestamp))->year;
+
+        $this->assertEquals($year->next()->today(), '2017-02-28');
+        $this->assertEquals($year->next(4)->today(), '2020-02-29');
+
+        $this->assertEquals($year->last()->today(), '2015-02-28');
+        $this->assertEquals($year->last(4)->today(), '2012-02-29');
     }
 }

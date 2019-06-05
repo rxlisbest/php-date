@@ -32,13 +32,27 @@ class Year extends Base implements StandardInterface
 
     public function last($number = 1)
     {
-        $this->outputTimestamp = strtotime(date('Y-m-d H:i:s', $this->outputTimestamp) . " - ${number} years");
+        $m = (int)date('m', $this->outputTimestamp);
+        $t = (int)date('t', strtotime(date('Y-m-d H:i:s', mktime(date('H', $this->outputTimestamp), date('i', $this->outputTimestamp), date('s', $this->outputTimestamp), $m, 1, date('Y', $this->outputTimestamp) - $number))));
+        $d = (int)date('d', $this->outputTimestamp);
+        if ($d > $t) {
+            $d = $t;
+        }
+
+        $this->outputTimestamp = strtotime(date('Y-m-d H:i:s', mktime(date('H', $this->outputTimestamp), date('i', $this->outputTimestamp), date('s', $this->outputTimestamp), $m, $d, date('Y', $this->outputTimestamp) - $number)));
         return $this;
     }
 
     public function next($number = 1)
     {
-        $this->outputTimestamp = strtotime(date('Y-m-d H:i:s', $this->outputTimestamp) . " + ${number} years");
+        $m = (int)date('m', $this->outputTimestamp);
+        $t = (int)date('t', strtotime(date('Y-m-d H:i:s', mktime(date('H', $this->outputTimestamp), date('i', $this->outputTimestamp), date('s', $this->outputTimestamp), $m, 1, date('Y', $this->outputTimestamp) + $number))));
+        $d = (int)date('d', $this->outputTimestamp);
+        if ($d > $t) {
+            $d = $t;
+        }
+
+        $this->outputTimestamp = strtotime(date('Y-m-d H:i:s', mktime(date('H', $this->outputTimestamp), date('i', $this->outputTimestamp), date('s', $this->outputTimestamp), $m, $d, date('Y', $this->outputTimestamp) + $number)));
         return $this;
     }
 
