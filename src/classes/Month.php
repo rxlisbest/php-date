@@ -9,6 +9,8 @@
 namespace Rxlisbest\PhpDate\Classes;
 
 use Rxlisbest\PhpDate\Interfaces\StandardInterface;
+use Rxlisbest\PhpDate\PhpDate;
+use Rxlisbest\PhpDate\PhpDateHelper;
 
 class Month extends Base implements StandardInterface
 {
@@ -60,6 +62,24 @@ class Month extends Base implements StandardInterface
     public function diff($string)
     {
         $timestamp = PhpDateHelper::getTimestamp($string);
-        return floor(abs($timestamp - $this->inputTimestamp) / (7 * 24 * 3600));
+        if ($timestamp > $this->inputTimestamp) {
+            $t1 = $timestamp;
+            $t2 = $this->inputTimestamp;
+        } else {
+            $t1 = $this->inputTimestamp;
+            $t2 = $timestamp;
+        }
+
+        $Y1 = date('Y', $t1);
+        $m1 = date('m', $t1);
+        $Y2 = date('Y', $t2);
+        $m2 = date('m', $t2);
+        $d = $Y1 * 12 + $m1 - $Y2 * 12 - $m2;
+
+        $t3 = (new PhpDate($t2))->month->next()->type('timestamp')->today();
+        if ($t3 > $t1) {
+            return $d - 1;
+        }
+        return $d;
     }
 }
