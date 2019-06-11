@@ -76,7 +76,7 @@ class Month extends Base implements StandardInterface
         $m2 = date('m', $t2);
         $d = $Y1 * 12 + $m1 - $Y2 * 12 - $m2;
 
-        $t3 = (new PhpDate($t2))->month->next()->type('timestamp')->today();
+        $t3 = (new PhpDate($t2))->month->next($d)->type('timestamp')->today();
         if ($t3 > $t1) {
             return $d - 1;
         }
