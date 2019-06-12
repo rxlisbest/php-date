@@ -49,5 +49,6 @@ class MonthTest extends TestCase
 
         $this->assertEquals($month->diff('2017-05-31'), 12);
         $this->assertEquals($month->diff('2019-05-31'), 11);
+        $this->assertEquals($month->diff('2019-06-01'), 12);
     }
 }
