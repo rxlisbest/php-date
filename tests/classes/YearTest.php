@@ -46,5 +46,8 @@ class YearTest extends TestCase
 
         $this->assertEquals($year->last()->today(), '2015-02-28');
         $this->assertEquals($year->last(4)->today(), '2012-02-29');
+
+        $this->assertEquals($year->diff('17-02-28'), 1);
+        $this->assertEquals($year->diff('17-02-27'), 0);
     }
 }
