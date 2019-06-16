@@ -9,6 +9,8 @@
 namespace Rxlisbest\PhpDate\Classes;
 
 use Rxlisbest\PhpDate\Interfaces\StandardInterface;
+use Rxlisbest\PhpDate\PhpDate;
+use Rxlisbest\PhpDate\PhpDateHelper;
 
 class Quarter extends Base implements StandardInterface
 {
@@ -92,10 +94,11 @@ class Quarter extends Base implements StandardInterface
         $t = floor($d / 3);
         $r = $d % 3;
 
-        $t3 = (new PhpDate($t2))->quarter->next($t)->month->next($r)->type('timestamp')->start();
-        if ($t3 > (new PhpDate($t1))->quarter->type('timestamp')->start()) {
-            return $d + 1;
+        $t3 = (new PhpDate($t2))->quarter->next($r)->type('timestamp')->today();
+        $t3 = (new PhpDate($t3))->month->next($t)->type('timestamp')->begin();
+        if ($t3 > (new PhpDate($t1))->quarter->type('timestamp')->begin()) {
+            return $t + 1;
         }
-        return $d;
+        return $t;
     }
 }

@@ -46,5 +46,7 @@ class QuarterTest extends TestCase
         $this->assertEquals($quarter->last(3)->today(), '2015-08-31');
         $this->assertEquals($quarter->last(3)->begin(), '2015-07-01');
         $this->assertEquals($quarter->last(3)->end(), '2015-09-30');
+
+        $this->assertEquals($quarter->diff('2015-09-30'), 3);
     }
 }
