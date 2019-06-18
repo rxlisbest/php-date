@@ -27,6 +27,12 @@ class PhpDate extends Container
         $this->registerProviders();
     }
 
+    public function diff($string = '')
+    {
+        $timestamp = PhpDateHelper::getTimestamp($string);
+
+    }
+
     private function registerProviders()
     {
         foreach ($this->providers as $provider) {

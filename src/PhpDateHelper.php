@@ -23,11 +23,4 @@ class PhpDateHelper
         }
         return $timestamp;
     }
-
-    public static function diff($date1, $date2)
-    {
-        $timestamp1 = self::getTimestamp($date1);
-        $timestamp2 = self::getTimestamp($date2);
-        $diff = abs($timestamp1 - $timestamp2);
-    }
 }
