@@ -72,3 +72,11 @@ $month = (new PhpDate($timestamp))->month;
 $month->format('Y-m-d H:i:s')->today(); // 2018-05-31 09:22:03
 ```
 说明：格式化参数格式同date函数第一个参数
+
+#### 4、两个日期的间隔（以月为例，年、季度、周同月）
+```$xslt
+$timestamp = 1527729723; // 2018-05-31 09:22:03
+$month = (new PhpDate($timestamp))->month;
+$month->diff('2018-06-01'); // 1
+```
+
