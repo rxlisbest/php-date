@@ -92,11 +92,9 @@ class Quarter extends Base implements StandardInterface
         $d = $Y1 * 12 + $m1 - $Y2 * 12 - $m2;
 
         $t = floor($d / 3);
-        $r = $d % 3;
 
-        $t3 = (new PhpDate($t2))->quarter->next($r)->type('timestamp')->today();
-        $t3 = (new PhpDate($t3))->month->next($t)->type('timestamp')->begin();
-        if ($t3 > (new PhpDate($t1))->quarter->type('timestamp')->begin()) {
+        $t3 = (new PhpDate($t2))->quarter->next($t)->begin();
+        if ($t3 < (new PhpDate($t1))->quarter->begin()) {
             return $t + 1;
         }
         return $t;
