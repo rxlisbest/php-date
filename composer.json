@@ -16,7 +16,10 @@
     },
     "autoload": {
         "psr-4": {
-            "Rxlisbest\\PhpDate\\": "src"
+            "Rxlisbest\\PhpDate\\": "src",
+            "Rxlisbest\\PhpDate\\Providers\\": "src/providers",
+            "Rxlisbest\\PhpDate\\Classes\\": "src/classes",
+            "Rxlisbest\\PhpDate\\Interfaces\\": "src/interfaces"
         }
     }
 }
