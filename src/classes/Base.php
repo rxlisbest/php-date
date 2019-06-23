@@ -47,10 +47,11 @@ class Base
 
     protected function output()
     {
+        $timestamp = strtotime(date($this->format, $this->outputTimestamp));
         if ($this->type === 'string') {
-            $output = date($this->format, $this->outputTimestamp);
+            $output = date($this->format, $timestamp);
         } else {
-            $output = $this->outputTimestamp;
+            $output = $timestamp;
         }
         $this->outputTimestamp = $this->inputTimestamp;
         return $output;
