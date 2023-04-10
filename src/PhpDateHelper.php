@@ -13,7 +13,10 @@ class PhpDateHelper
 {
     public static function getTimestamp($string)
     {
-        if (ctype_digit($string) && $string <= 2147483647) {
+        if (ctype_digit($string)) {
+            if($string <= 2147483647){
+                if(PHP_INT_SIZE==4 && PHP_INT_MAX<>9223372036854775807)  throw new \Exception('Illegal parameter format');
+            }
             $timestamp = $string;
         } else {
             $timestamp = strtotime($string);
